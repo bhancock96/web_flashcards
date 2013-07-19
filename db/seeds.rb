@@ -1,7 +1,10 @@
-require 'faker'
+require 'csv'
 
-@decks = ["Math"]
+math_deck = Deck.create(name: "Math")
 
-10.times do 
-  Deck.new(name: @decks.sample)
+CSV.foreach('math_deck.csv', :headers => true, :header_converters => :symbol) do |row|
+  math_deck.flashcards << Flashcard.create(Hash[row])
 end
+  
+
+
