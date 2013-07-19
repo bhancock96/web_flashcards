@@ -5,9 +5,22 @@ post '/' do
   redirect "/users/#{user.id}"
 end
 
-get '/user/:id' do
+get '/users/:id' do
   @user = User.find(params[:id])  # get user information
-
 
   erb :profile
 end
+
+post '/login' do
+  @user = User.authenticate(params[:username], params[:password])
+  p params[:username]
+  p params[:password]
+  p @user
+  if @user == false
+    redirect '/'
+  else
+    session[:id] = @user.id
+    redirect "/users/#{@user.id}"
+  end
+end
+
