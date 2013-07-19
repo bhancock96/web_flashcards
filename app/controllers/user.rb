@@ -13,9 +13,7 @@ end
 
 post '/login' do
   @user = User.authenticate(params[:username], params[:password])
-  p params[:username]
-  p params[:password]
-  p @user
+
   if @user == false
     redirect '/'
   else
