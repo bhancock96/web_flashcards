@@ -1,0 +1,5 @@
+<% if @flashcard_id == @end_of_the_deck %>
+  <a href="/users/<%=session[:id]%>">Congrats! See your results</a>
+<% else %>
+  <a href="/decks/<%= @deck %>/<%= @flashcard_id + 1 %>">Next Question</a>
+<% end %>

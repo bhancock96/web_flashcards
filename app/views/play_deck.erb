@@ -1,7 +1,3 @@
-<% if session[:user_answer] %>
-  <h1>Answer:</h1><%= session[:user_answer]%>
-<% end %>
-
 <h1>Question: <%= @flashcard.question %></h1> 
 <form action='/answer' method='POST'>
 <label for="user_answer">Your guess:</label>
