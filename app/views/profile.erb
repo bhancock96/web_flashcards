@@ -1,7 +1,13 @@
 <h1> Hello, <%= @user.name %>  </h1>
 
+<% @round.each_with_index do |round, index| %>
+  <% if round.guesses.count > 0 %>
+    <p>Round <%= index + 1 %> - Number of guesses: <%= round.guesses.count %>, Correct guesses: <%= round.guesses.where(:correct => true).count %>, Percent correct: <%= ((round.guesses.where(:correct => true).count).to_f/(round.guesses.count).to_f) * 100 %>% </p>
+<% end %>
+<% end %>
 
 
-<a href="/">Logout</a>
+<a href="/decks">Play Game</a>
+<a href="/logout">Logout</a>
 
 <p>User created at <%= @user.created_at %>  </p>
